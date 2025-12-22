@@ -85,6 +85,8 @@ jobs:
             export DB_APPKEY=${{ secrets.DB_APPKEY}}
             export DB_APPSECRET=${{ secrets.DB_APPSECRET}}
             export EOS_API_KEY=${{ secrets.EOS_API_KEY}}
+
+            echo "HOST: ${{ secrets.FINTORY_WEBSOCKET_HOST }}"
            
 
             aws ecr get-login-password --region ap-northeast-2 | \
