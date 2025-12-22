@@ -68,7 +68,7 @@ jobs:
         uses: aws-actions/amazon-ecr-login@v1
 
       - name: Deploy fintory-websocket to EC2
-        uses: appleboy/ssh-action@v1.0.0
+        uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.FINTORY_WEBSOCKET_HOST }}
           username: ubuntu
