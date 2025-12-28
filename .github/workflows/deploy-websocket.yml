@@ -74,18 +74,20 @@ jobs:
           username: ubuntu
           key: ${{ secrets.EC2_WEBSOCKET_SSH_KEY }}
           script: |
-            export ECR_REGISTRY=${{ steps.login-ecr.outputs.registry }}
-            export RDS_URL=${{ secrets.RDS_URL }}
-            export RDS_USERNAME=${{ secrets.RDS_USERNAME }}
-            export RDS_PASSWORD=${{ secrets.RDS_PASSWORD }} 
-            export AWS_REDIS_HOST=${{ secrets.FINTORY_CHILD_PRIVATE_HOST }}
-            export AWS_REDIS_PASSWORD=${{ secrets.AWS_REDIS_PASSWORD }}
-            export HANTU_APPKEY=${{ secrets.HANTU_APPKEY}}
-            export HANTU_APPSECRET=${{ secrets.HANTU_APPSECRET}}
-            export DB_APPKEY=${{ secrets.DB_APPKEY}}
-            export DB_APPSECRET=${{ secrets.DB_APPSECRET}}
-            export EOS_API_KEY=${{ secrets.EOS_API_KEY}}
-
+            cat > .env << 'EOF'
+            ECR_REGISTRY=${{ steps.login-ecr.outputs.registry }}
+            RDS_URL=${{ secrets.RDS_URL }}
+            RDS_USERNAME=${{ secrets.RDS_USERNAME }}
+            RDS_PASSWORD=${{ secrets.RDS_PASSWORD }} 
+            AWS_REDIS_HOST=${{ secrets.FINTORY_CHILD_PRIVATE_HOST }}
+            AWS_REDIS_PASSWORD=${{ secrets.AWS_REDIS_PASSWORD }}
+            HANTU_APPKEY=${{ secrets.HANTU_APPKEY}}
+            HANTU_APPSECRET=${{ secrets.HANTU_APPSECRET}}
+            DB_APPKEY=${{ secrets.DB_APPKEY}}
+            DB_APPSECRET=${{ secrets.DB_APPSECRET}}
+            EOS_API_KEY=${{ secrets.EOS_API_KEY}}
+            EOF
+            
             echo "HOST: ${{ secrets.FINTORY_WEBSOCKET_HOST }}"
            
 
