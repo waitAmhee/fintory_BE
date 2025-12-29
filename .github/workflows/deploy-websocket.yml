@@ -79,7 +79,7 @@ jobs:
             RDS_URL=${{ secrets.RDS_URL }}
             RDS_USERNAME=${{ secrets.RDS_USERNAME }}
             RDS_PASSWORD=${{ secrets.RDS_PASSWORD }} 
-            AWS_REDIS_HOST=${{ secrets.FINTORY_CHILD_PRIVATE_HOST }}
+            AWS_REDIS_HOST=${{ secrets.AWS_REDIS_HOST }}
             AWS_REDIS_PASSWORD=${{ secrets.AWS_REDIS_PASSWORD }}
             HANTU_APPKEY=${{ secrets.HANTU_APPKEY}}
             HANTU_APPSECRET=${{ secrets.HANTU_APPSECRET}}
