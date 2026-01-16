@@ -61,7 +61,7 @@ public class WebSocketMetrics {
         messagesFailed.increment();
     }
 
-    public void recoredLatency(long startTimeMillis){
+    public void recordLatency(long startTimeMillis){
         long duration = System.currentTimeMillis() - startTimeMillis;
         messageLatency.record(duration, TimeUnit.MILLISECONDS);
     }

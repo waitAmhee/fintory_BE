@@ -97,7 +97,7 @@ public class StockDataProcessService {
 
                 messageTemplate.convertAndSend("/topic/stock/live-Price/" + stockCode, stockData, headerAccessor.getMessageHeaders());
 
-                webSocketMetrics.recoredLatency(startTime);
+                webSocketMetrics.recordLatency(startTime);
             }
         }catch(Exception e){
             webSocketMetrics.incrementMessageFailed();
