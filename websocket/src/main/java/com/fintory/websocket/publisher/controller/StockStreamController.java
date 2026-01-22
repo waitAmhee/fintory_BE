@@ -5,7 +5,6 @@ import com.fintory.websocket.monitoring.config.SSEMetrics;
 import com.fintory.websocket.publisher.handler.StockStreamBridge;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.catalina.Server;
 import org.springframework.http.MediaType;
 import org.springframework.http.codec.ServerSentEvent;
 import org.springframework.web.bind.annotation.GetMapping;
