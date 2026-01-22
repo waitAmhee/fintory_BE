@@ -86,7 +86,6 @@ public class StockDataProcessService {
             if (stream.priceChange() == null || stream.priceChange().compareTo(BigDecimal.ZERO) == 0) {
                 return;
             }*/
-            SSEMetrics.incrementMessageSent();
             stockStreamBridge.publish((LiveStockPriceStream) stockData);
         }
     }
