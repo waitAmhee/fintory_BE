@@ -26,6 +26,10 @@ spring:
       port: 6379
       password: ${AWS_REDIS_PASSWORD}
 
+  websocket:
+    stomp:
+      stats-log-period: 30000
+
 management:
   endpoints:
     web:

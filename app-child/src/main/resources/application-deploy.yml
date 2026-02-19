@@ -6,9 +6,6 @@ spring:
     activate:
       on-profile: deploy
 
-  websocket:
-    stomp:
-      stats-log-period: 30000
 
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -37,8 +34,7 @@ spring:
           temperature: ${OPENAI_TEMPERATURE}
           max-tokens: ${OPENAI_MAX_TOKENS}
           timeout: 60s
-
-
+          
   security:
     oauth2:
       client:
@@ -57,6 +53,7 @@ spring:
             token-uri: https://kauth.kakao.com/oauth/token
             user-info-uri: https://kapi.kakao.com/v2/user/me
             user-name-attribute: id
+
 
   main:
     allow-bean-definition-overriding: true

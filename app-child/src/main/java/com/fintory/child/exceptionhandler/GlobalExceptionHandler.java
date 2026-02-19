@@ -67,7 +67,7 @@ public class GlobalExceptionHandler {
     }
 
     @ExceptionHandler(Exception.class)
-    public ResponseEntity<ExceptionResponse> handleUnhandledException(Exception e, HttpServletRequest request) {
+    public ResponseEntity<ExceptionResponse> handleUnhandledException(Exception e) {
         log.error("Unknown server error", e);
         return ResponseEntity
                 .status(HttpStatus.INTERNAL_SERVER_ERROR)

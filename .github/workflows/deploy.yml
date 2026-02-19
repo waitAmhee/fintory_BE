@@ -76,28 +76,31 @@ jobs:
           username: ubuntu
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
-            export ECR_REGISTRY=${{ steps.login-ecr.outputs.registry }}
-            export RDS_URL=${{ secrets.RDS_URL }}
-            export RDS_USERNAME=${{ secrets.RDS_USERNAME }}
-            export RDS_PASSWORD=${{ secrets.RDS_PASSWORD }}
-            export JWT_SECRET_KEY=${{ secrets.JWT_SECRET_KEY }}
-            export ACCESS_TOKEN_EXPIRATION_MINUTES=${{ secrets.ACCESS_TOKEN_EXPIRATION_MINUTES }}
-            export REFRESH_TOKEN_EXPIRATION_DAYS=${{ secrets.REFRESH_TOKEN_EXPIRATION_DAYS }}
-            export GOOGLE_CLIENT_ID=${{ secrets.GOOGLE_CLIENT_ID }}
-            export KAKAO_REST_CLIENT_ID=${{ secrets.KAKAO_REST_CLIENT_ID }}
-            export KAKAO_REDIRECT_URI=${{ secrets.KAKAO_REDIRECT_URI }}
-            export AWS_REDIS_PASSWORD=${{ secrets.AWS_REDIS_PASSWORD }}
-            export HANTU_APPKEY=${{ secrets.HANTU_APPKEY}}
-            export HANTU_APPSECRET=${{ secrets.HANTU_APPSECRET}}
-            export DB_APPKEY=${{ secrets.DB_APPKEY}}
-            export DB_APPSECRET=${{ secrets.DB_APPSECRET}}
-            export EOS_API_KEY=${{ secrets.EOS_API_KEY}}
-            export OPENAI_API_KEY=${{secrets.OPENAI_API_KEY}}
-            export OPENAI_MODEL=${{ secrets.OPENAI_MODEL}}
-            export OPENAI_TEMPERATURE=${{secrets.OPENAI_TEMPERATURE}}
-            export OPENAI_MAX_TOKENS=${{secrets.OPENAI_MAX_TOKENS}}
-            export WEBSOCKET_PRIVATE_HOST=${{secrets.WEBSOCKET_PRIVATE_HOST}}
-            export FIREBASE_CONFIG='${{secrets.FIREBASE_CONFIG}}' 
+            cat > .env << 'EOF'
+            ECR_REGISTRY=${{ steps.login-ecr.outputs.registry }}
+            RDS_URL=${{ secrets.RDS_URL }}
+            RDS_USERNAME=${{ secrets.RDS_USERNAME }}
+            RDS_PASSWORD=${{ secrets.RDS_PASSWORD }}
+            JWT_SECRET_KEY=${{ secrets.JWT_SECRET_KEY }}
+            ACCESS_TOKEN_EXPIRATION_MINUTES=${{ secrets.ACCESS_TOKEN_EXPIRATION_MINUTES }}
+            REFRESH_TOKEN_EXPIRATION_DAYS=${{ secrets.REFRESH_TOKEN_EXPIRATION_DAYS }}
+            GOOGLE_CLIENT_ID=${{ secrets.GOOGLE_CLIENT_ID }}
+            KAKAO_REST_CLIENT_ID=${{ secrets.KAKAO_REST_CLIENT_ID }}
+            KAKAO_REDIRECT_URI=${{ secrets.KAKAO_REDIRECT_URI }}
+            AWS_REDIS_HOST=localhost
+            AWS_REDIS_PASSWORD=${{ secrets.AWS_REDIS_PASSWORD }}
+            HANTU_APPKEY=${{ secrets.HANTU_APPKEY }}
+            HANTU_APPSECRET=${{ secrets.HANTU_APPSECRET }}
+            DB_APPKEY=${{ secrets.DB_APPKEY }}
+            DB_APPSECRET=${{ secrets.DB_APPSECRET }}
+            EOS_API_KEY=${{ secrets.EOS_API_KEY }}
+            OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }}
+            OPENAI_MODEL=${{ secrets.OPENAI_MODEL }}
+            OPENAI_TEMPERATURE=${{ secrets.OPENAI_TEMPERATURE }}
+            OPENAI_MAX_TOKENS=${{ secrets.OPENAI_MAX_TOKENS }}
+            WEBSOCKET_PRIVATE_HOST=${{ secrets.WEBSOCKET_PRIVATE_HOST }}
+            FIREBASE_CONFIG=${{ secrets.FIREBASE_CONFIG }}
+            EOF
             
             aws ecr get-login-password --region ap-northeast-2 | \
             docker login --username AWS --password-stdin ${{ steps.login-ecr.outputs.registry }}

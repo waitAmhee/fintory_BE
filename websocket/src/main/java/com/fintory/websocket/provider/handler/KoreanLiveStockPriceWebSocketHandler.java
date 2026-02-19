@@ -44,10 +44,6 @@ public class KoreanLiveStockPriceWebSocketHandler extends TextWebSocketHandler {
         this.dataCallBack = dataCallBack;
     }
 
-    public void setSaveCallBack(Consumer<LiveStockPriceStream> saveCallBack) {
-        this.saveCallBack = saveCallBack;
-    }
-
 
     //연결 상태 확인
     public boolean isConnected(){

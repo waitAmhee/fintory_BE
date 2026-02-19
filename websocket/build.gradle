@@ -76,5 +76,5 @@ bootJar {
 }
 
 jar {
-    enabled = true //다른 모듈이 참조할 수 있는 일반 jar로 변경함
+    enabled = false
 }
